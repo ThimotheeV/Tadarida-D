@@ -12,7 +12,7 @@ ParamToSave::ParamToSave(int numTableau,int numPar,QString columnTitle)
     NumPar=numPar;
     ColumnTitle=columnTitle;
     NeedVer = 0;
-	LimVer = -1;
+    LimVer = -1;
 }
 
 ParamToSave::ParamToSave(int numTableau,int numPar,QString columnTitle,int needVer)
@@ -21,7 +21,7 @@ ParamToSave::ParamToSave(int numTableau,int numPar,QString columnTitle,int needV
     NumPar=numPar;
     ColumnTitle=columnTitle;
     NeedVer = needVer;
-	LimVer = -1;
+    LimVer = -1;
 }
 
 ParamToSave::ParamToSave(int numTableau,int numPar,QString columnTitle,int needVer,int limVer)
@@ -30,7 +30,7 @@ ParamToSave::ParamToSave(int numTableau,int numPar,QString columnTitle,int needV
     NumPar=numPar;
     ColumnTitle=columnTitle;
     NeedVer = needVer;
-	LimVer = limVer;
+    LimVer = limVer;
 }
 
 ParamToSave::ParamToSave()
@@ -74,9 +74,9 @@ DetecTreatment::~DetecTreatment()
 void DetecTreatment::InitializeDetecTreatment()
 {
     if(_detec->IDebug) _detec->_logText << "i1" << endl;
-    _data				= ( float* ) fftwf_malloc( sizeof( float ) * FFT_HEIGHT_MAX );
+    _data               = ( float* ) fftwf_malloc( sizeof( float ) * FFT_HEIGHT_MAX );
     if(_detec->IDebug) aff("_data",(qint64)_data,FFT_HEIGHT_MAX*sizeof(float));
-    // _fftRes 		= ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
+    // _fftRes      = ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
     // // if(_detec->IDebug) aff("_fftRes",(qint64)_fftRes,FFT_HEIGHT_MAX*sizeof(fftwf_complex));
     // _complexInput        = ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
     // // if(_detec->IDebug) aff("_complexInput",(qint64)_complexInput,FFT_HEIGHT_MAX*sizeof(fftwf_complex));
@@ -765,10 +765,10 @@ bool DetecTreatment::computeFFT(QString &wavFile)
     float a = 0.0f;
     _energyMax        = 0.0f;
     _energyMin        = 0.0f;
-    _fftHeightHalf		= (int)ceil((float)_fftHeight/(float)2);
+    _fftHeightHalf      = (int)ceil((float)_fftHeight/(float)2);
 
-    _iOverlapMoving	= (int)ceil((float)_fftHeight/(float)(_nbo*2));
-    _sonogramWidth		= (int)ceil(_nbo*2*(float)_soundFileInfo.frames/(float)_fftHeight)+1;
+    _iOverlapMoving = (int)ceil((float)_fftHeight/(float)(_nbo*2));
+    _sonogramWidth      = (int)ceil(_nbo*2*(float)_soundFileInfo.frames/(float)_fftHeight)+1;
     _msPerX =(float)(_fftHeightHalf*1000)/(_nbo*_soundFileInfo.samplerate*_timeExpansion); //Time: msec
     //_fIStream << _sonogramWidth*_msPerX/1000 << '\t';
     _khzPerY =(float)(_soundFileInfo.samplerate*_timeExpansion)/(float)(_fftHeight*1000); //Freq:khz
@@ -862,10 +862,10 @@ bool DetecTreatment::computeFFT(QString &wavFile)
                     }
                 }
                 else 
-				{
-				//� sml[jc] = -50;
-				sml[jc] = -5000;
-				}
+                {
+                //� sml[jc] = -50;
+                sml[jc] = -5000;
+                }
             }
             //if(_detec->IDebug && _firstFile) _detec->_logText << "5" << endl;
             iCount++;
@@ -3643,7 +3643,7 @@ void DetecTreatment::saveParameters(const QString& wavFile)
                << '\t' << "Version"<< '\t' << "FileDur"<< '\t' << "SampleRate";
     for(int j=0;j<_numberCallParameters;j++)
         if(_vectPar[j].NeedVer<=_paramVersion && (_vectPar[j].LimVer< 0 || _vectPar[j].LimVer>=_paramVersion))  
-		fileStream << '\t' << _vectPar[j].ColumnTitle;
+        fileStream << '\t' << _vectPar[j].ColumnTitle;
     fileStream << endl;
     //float **parArray;
     //float u_f;
@@ -3659,8 +3659,8 @@ void DetecTreatment::saveParameters(const QString& wavFile)
             //u_f = callArray[_vectPar[j].NumTableau][_vectPar[j].NumPar];
             //u_f = ((float)qRound(u_f*100.0f))/100.0f;
             //_simpleParamsArray[i][j]=u_f;
-			if(_vectPar[j].NeedVer<=_paramVersion && (_vectPar[j].LimVer< 0 || _vectPar[j].LimVer>=_paramVersion))  
-			fileStream << '\t' <<  callArray[_vectPar[j].NumTableau][_vectPar[j].NumPar];
+            if(_vectPar[j].NeedVer<=_paramVersion && (_vectPar[j].LimVer< 0 || _vectPar[j].LimVer>=_paramVersion))  
+            fileStream << '\t' <<  callArray[_vectPar[j].NumTableau][_vectPar[j].NumPar];
         }
         fileStream << endl;
     }
@@ -3710,8 +3710,8 @@ void DetecTreatment::saveDatFile(QString wavFile)
         _callMatrixStream << _masterPoints[i].y();
         int nbPixel=_callsArray[i].size();
         _callMatrixStream << nbPixel;
-		int x,y; 
-		float e;
+        int x,y; 
+        float e;
         for(int j=0;j<nbPixel;j++)
         {
             x = _callsArray[i].at(j).x();

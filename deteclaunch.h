@@ -11,7 +11,7 @@
 #define PARAMNO 0
 #define PARAMEXPANSION 1
 #define PARAMCOMPRESS 2
-#define PARAMHELP 3
+#define PARAMREDIR 3
 #define PARAMNTHREADS 4
 #define PARAMNPROCESS 5
 #define PARAMNCALLED 6
@@ -26,7 +26,7 @@
 #include <QTextStream>
 #include "fftw3.h"
 
-#define	FFT_HEIGHT_MAX 4096
+#define FFT_HEIGHT_MAX 4096
 
 
 class DetecLaunch : public QObject
@@ -38,9 +38,9 @@ public:
     bool treat(int,char **);
     bool _withTimeCsv;
     bool IDebug;
-    fftwf_complex*	             _complexInput[10];
-    fftwf_complex*	             _fftRes[10];
-    fftwf_plan		             Plan[10][6];
+    fftwf_complex*               _complexInput[10];
+    fftwf_complex*               _fftRes[10];
+    fftwf_plan                   Plan[10][6];
     QTextStream  _logText;
 
 
