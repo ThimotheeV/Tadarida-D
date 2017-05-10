@@ -4,7 +4,7 @@
 using namespace std;
 
 //Ajout d'un paramètre supplémentaire
-Detec::Detec(DetecLaunch *pdl,QString processSuffixe,int iThread,QString threadSuffixe,int modeDirFile,QString wavPath,QStringList wavFileList,QStringList wavRepList,int timeExpansion,bool withTimeCsv,int parVer,bool iDebug, QString reDir): QThread()
+Detec::Detec(DetecLaunch *pdl,QString processSuffixe,int iThread,QString threadSuffixe,int modeDirFile,QString wavPath,QStringList wavFileList,QStringList wavRepList,int timeExpansion,bool withTimeCsv,int parVer,bool iDebug): QThread()
 {
     PDL = pdl;
     IThread = iThread;
@@ -21,7 +21,7 @@ Detec::Detec(DetecLaunch *pdl,QString processSuffixe,int iThread,QString threadS
 
     ReprocessingMode = false;
     //
-    _txtPath = reDir ;
+    _txtPath = QDir::currentPath() ;
     ResultSuffix = QString("ta");
     MustCompress = false;
     _imageData = false;
@@ -151,3 +151,6 @@ bool Detec::createTxtFile(QString dirPath)
     }
     return(true);
 }
+
+
+

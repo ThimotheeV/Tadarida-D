@@ -1,3 +1,4 @@
+
 #include "deteclaunch.h"
 #include "detec.h"
 
@@ -39,7 +40,7 @@ bool DetecLaunch::treat(int argc, char *argv[])
             {
                 if(alire.right(1) == "x") {paramParam = PARAMEXPANSION; waitValue=true;}
                 if(alire.right(1) == "c") paramParam = PARAMCOMPRESS; // TODO...
-                if(alire.right(1) == "r") {paramParam = PARAMREDIR; waitValue=true;} // TODO...
+                //if(alire.right(1) == "r") {paramParam = PARAMREDIR; waitValue=true;} // TODO...
                 if(alire.right(1) == "t") {paramParam = PARAMNTHREADS; waitValue=true;}
                 if(alire.right(1) == "p") {paramParam = PARAMNPROCESS; waitValue=true;}
                 if(alire.right(1) == "s") _withTimeCsv = true;
@@ -77,10 +78,6 @@ bool DetecLaunch::treat(int argc, char *argv[])
                 {
                     if(ok==true && value > 0) _paramVersion = value;
                 }
-                if(paramParam==PARAMREDIR)
-                {
-                    reDir = alire;
-                }
             }
             else
             {
@@ -92,7 +89,7 @@ bool DetecLaunch::treat(int argc, char *argv[])
                     else
                     {
                         _modeDirFile = DIRECTORYMODE;
-                        _wavPath = alire;
+                        _wavPath = QDir::currentPath();
                     }
                 }
                 if(_modeDirFile == FILESMODE) firstList.append(alire);
@@ -259,7 +256,7 @@ bool DetecLaunch::treat(int argc, char *argv[])
     int fh;
     for(int j=0;j<_nbThreads;j++)
     {
-        _fftRes[j]      = ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
+        _fftRes[j] 		= ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
         _complexInput[j]        = ( fftwf_complex* ) fftwf_malloc( sizeof( fftwf_complex ) * FFT_HEIGHT_MAX );
         for(int i=0;i<6;i++)
         {
@@ -277,8 +274,8 @@ bool DetecLaunch::treat(int argc, char *argv[])
         _logText << "Creation du thread " << i+1 << " " << QDateTime::currentDateTime().toString("hh:mm:ss:zzz") << endl;
 
         if(_nbThreads>1) threadSuffixe = QString("_") + QString::number(i+1);
-        if(_nbThreads==1) pdetec[i] = new Detec(this,processSuffixe,i,threadSuffixe,_modeDirFile,_wavPath,_wavFileListProcess,_wavRepList,_timeExpansion,_withTimeCsv,_paramVersion,IDebug,reDir);
-        else  pdetec[i] = new Detec(this,processSuffixe,i,threadSuffixe,_modeDirFile,_wavPath,pWavFileList[i],_wavRepList,_timeExpansion,_withTimeCsv,_paramVersion,IDebug,reDir);
+        if(_nbThreads==1) pdetec[i] = new Detec(this,processSuffixe,i,threadSuffixe,_modeDirFile,_wavPath,_wavFileListProcess,_wavRepList,_timeExpansion,_withTimeCsv,_paramVersion,IDebug);
+        else  pdetec[i] = new Detec(this,processSuffixe,i,threadSuffixe,_modeDirFile,_wavPath,pWavFileList[i],_wavRepList,_timeExpansion,_withTimeCsv,_paramVersion,IDebug);
     // variables à initialiser
 
         _logText << "Lancement du thread " << i+1 << " " << QDateTime::currentDateTime().toString("hh:mm:ss:zzz") << endl;
@@ -402,3 +399,4 @@ void DetecLaunch::processError(QProcess::ProcessError pe)
     int ipe = (int)pe;
     _logText << "évt processError erreur = " << ipe << endl;
 }
+

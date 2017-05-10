@@ -22,7 +22,7 @@ class Detec : public QThread
 {
     Q_OBJECT
 public:
-    Detec(DetecLaunch *pdl,QString,int,QString,int,QString,QStringList,QStringList,int,bool,int,bool, QString);
+    Detec(DetecLaunch *pdl,QString,int,QString,int,QString,QStringList,QStringList,int,bool,int,bool);
     Detec(int);
     ~Detec();
     void                 run();
@@ -67,9 +67,9 @@ private:
     int                  _freqMin;
     QFile             _logFile;
     int                   _modeDirFile;
-    int               _nbo;
+    int	              _nbo;
     int                  _stopThreshold;
-    int               _timeExpansion;
+    int	              _timeExpansion;
     QFile             _timeFile;
     QString         _txtPath;
     bool               _useValflag;
