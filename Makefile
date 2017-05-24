@@ -11,7 +11,7 @@ CXX		?= g++
 MOC		?= moc
 CXXFLAGS	+= -W -Wall -std=c++0x -pedantic
 LDFLAGS		+= -lQtCore -lQtGui -lfftw3f -lsndfile
-INCLUDE		+= -I LD_LIBRARY_PATH/include/qt/QtCore -I LD_LIBRARY_PATH/include/qt/
+INCLUDE		+= -I $(PREFIX)/include/qt/QtCore -I $(PREFIX)/include/qt/
 TARGET		= tadaridaD
 TEST_SCRIPT = tests/test.sh
 
