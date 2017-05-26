@@ -13,7 +13,7 @@ CXXFLAGS	+= -W -Wall -std=c++0x -pedantic
 LDFLAGS		+= -lQtCore -lQtGui -lfftw3f -lsndfile
 INCLUDE		+= -I $(PREFIX)/include/qt/QtCore -I $(PREFIX)/include/qt/
 TARGET		= tadaridaD
-TEST_SCRIPT = tests/test.sh
+TEST_SCRIPT = ./tests/test.sh
 
 ifndef DEBUG
 CXXFLAGS	+= -O2
