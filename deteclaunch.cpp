@@ -399,4 +399,3 @@ void DetecLaunch::processError(QProcess::ProcessError pe)
     int ipe = (int)pe;
     _logText << "évt processError erreur = " << ipe << endl;
 }
-

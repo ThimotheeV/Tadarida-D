@@ -151,6 +151,3 @@ bool Detec::createTxtFile(QString dirPath)
     }
     return(true);
 }
-
-
-
