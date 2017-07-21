@@ -236,7 +236,7 @@ void DetecTreatment::initVectorParams()
     _vectPar.push_back(ParamToSave(SH,FreqPkM,"FreqPkM",0,1)); // suppr
     _vectPar.push_back(ParamToSave(SH,PosPkS,"PosPkS",0,1)); // suppr
     _vectPar.push_back(ParamToSave(SH,PosPkM,"PosPkM",0,1)); // suppr
-    _vectPar.push_back(ParamToSave(SH,FreqPkS2,"FreqPkM1",0,1));  // suppr
+    _vectPar.push_back(ParamToSave(SH,FreqPkS2,"FreqPkS2",0,1));  // suppr
     _vectPar.push_back(ParamToSave(SH,FreqPkM2,"FreqPkM2",0,1));  // suppr
     _vectPar.push_back(ParamToSave(SH,PrevMP1,"PrevMP1"));
     _vectPar.push_back(ParamToSave(SH,PrevMP2,"PrevMP2"));
